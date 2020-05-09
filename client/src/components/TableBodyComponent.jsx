@@ -1,0 +1,42 @@
+import React from 'react';
+import TableRow from '@material-ui/core/TableRow';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import { withStyles } from '@material-ui/core/styles';
+
+const StyledTableCell = withStyles(() => ({
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
+
+const TableBodyComponent = ({ stateData, stateName }) => {
+  return (
+    <TableBody>
+      {stateData.map((data) => (
+        <StyledTableRow key={data.state}>
+          <StyledTableCell component="th" scope="row">
+            {'(' + data.state + ')'}
+          </StyledTableCell>
+          <StyledTableCell align="center">
+            {data.hospitalized ? data.hospitalized : 0}
+          </StyledTableCell>
+          <StyledTableCell align="right">
+            {data.hospitalized ? data.hospitalized : 0}
+          </StyledTableCell>
+          {/* "Total new corona deaths during the last 3 days above" */}
+        </StyledTableRow>
+      ))}
+    </TableBody>
+  );
+};
+
+export default TableBodyComponent;
