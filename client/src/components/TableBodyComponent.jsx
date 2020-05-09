@@ -20,13 +20,14 @@ const StyledTableRow = withStyles((theme) => ({
 
 const TableBodyComponent = ({ stateData, stateInfo }) => {
   const stateNames = stateInfo.map((data) => data.name);
+  const stateShort = stateInfo.map((data) => data.state);
 
   return (
     <TableBody>
       {stateData.map((data, index) => (
         <StyledTableRow key={data.state}>
           <StyledTableCell align="center" component="th" scope="row">
-            {stateNames[index]}
+            {stateNames[index] + ' ' + '(' + stateShort[index] + ')'}
           </StyledTableCell>
           <StyledTableCell align="center">
             {data.hospitalized ? data.hospitalized : 0}
