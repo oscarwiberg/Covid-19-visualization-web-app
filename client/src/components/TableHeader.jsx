@@ -15,11 +15,11 @@ const TableHeader = () => {
   return (
     <TableHead>
       <TableRow>
-        <StyledTableCell>State</StyledTableCell>
+        <StyledTableCell align="center">State</StyledTableCell>
         <StyledTableCell align="center">
           The amount of currently hospitalized corona patients per US state
         </StyledTableCell>
-        <StyledTableCell align="right">
+        <StyledTableCell align="center">
           Total new corona deaths during the last 3 days
         </StyledTableCell>
       </TableRow>

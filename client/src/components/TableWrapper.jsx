@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 const TableWrapper = () => {
   const classes = useStyles();
   const [stateData, setStateData] = useState([]);
-  const [stateName, setStateName] = useState([]);
+  const [stateInfo, setStateInfo] = useState([]);
 
   useEffect(() => {
     const getStateData = () => {
@@ -32,16 +32,16 @@ const TableWrapper = () => {
   }, []);
 
   useEffect(() => {
-    const getStateName = () => {
+    const getStateInfo = () => {
       axios
         .get('https://covidtracking.com/api/v1/states/info.json')
         .then((res) => {
-          setStateName(res.data);
+          setStateInfo(res.data);
         })
         .catch((err) => console.log(err));
     };
 
-    getStateName();
+    getStateInfo();
   }, []);
 
   return (
@@ -49,7 +49,7 @@ const TableWrapper = () => {
       <Table className={classes.table}>
         {/*size="small" on the container?*/}
         <TableHeader />
-        <TableBodyComponent stateData={stateData} stateName={stateName} />
+        <TableBodyComponent stateData={stateData} stateInfo={stateInfo} />
       </Table>
     </TableContainer>
   );

@@ -18,18 +18,20 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const TableBodyComponent = ({ stateData, stateName }) => {
+const TableBodyComponent = ({ stateData, stateInfo }) => {
+  const stateNames = stateInfo.map((data) => data.name);
+
   return (
     <TableBody>
-      {stateData.map((data) => (
+      {stateData.map((data, index) => (
         <StyledTableRow key={data.state}>
-          <StyledTableCell component="th" scope="row">
-            {'(' + data.state + ')'}
+          <StyledTableCell align="center" component="th" scope="row">
+            {stateNames[index]}
           </StyledTableCell>
           <StyledTableCell align="center">
             {data.hospitalized ? data.hospitalized : 0}
           </StyledTableCell>
-          <StyledTableCell align="right">
+          <StyledTableCell align="center">
             {data.hospitalized ? data.hospitalized : 0}
           </StyledTableCell>
           {/* "Total new corona deaths during the last 3 days above" */}
