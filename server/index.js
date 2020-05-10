@@ -9,7 +9,7 @@ const fetchCurrentDay = () => {
   axios
     .get('https://covidtracking.com/api/v1/states/current.json') // Ska Hämta dödsantal och kalkylera senaste 3 dagarna
     .then((res) => {
-      return res.data;
+      console.log(res.data);
     })
     .catch((err) => console.log(err));
 };
@@ -20,7 +20,7 @@ const fetchDaily = () => {
   axios
     .get('https://covidtracking.com/api/v1/states/daily.json') // Ska Hämta dödsantal och kalkylera senaste 3 dagarna
     .then((res) => {
-      return res.data;
+      console.log(res.data);
     })
     .catch((err) => console.log(err));
 };
@@ -37,13 +37,9 @@ dayBeforeYesterday.setDate(today.getDate() - 2);
 
 console.log(today, yesterday, dayBeforeYesterday);
 
-// Calculate total new corona deaths during the last 3 days
+// Calculate total new corona deaths during the last 3 days (current day + yesterday + the day before yesterday)
 
 const calculateLastThreeDays = () => {};
-
-app.get('/', async (req, res) => {
-  res.send();
-});
 
 const port = 5000;
 
