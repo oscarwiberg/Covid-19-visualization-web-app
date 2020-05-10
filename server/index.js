@@ -6,15 +6,30 @@ const app = express();
 app.use(cors({ origin: 'http://localhost:3000' }));
 
 const fetchCurrentDay = () => {
-  axios
+  const data = axios
     .get('https://covidtracking.com/api/v1/states/current.json') // Ska Hämta dödsantal och kalkylera senaste 3 dagarna
     .then((res) => {
-      console.log(res.data);
+      console.log(mapCurrentDay(res.data));
     })
     .catch((err) => console.log(err));
 };
 
-//fetchCurrentDay();
+fetchCurrentDay();
+
+const mapCurrentDay = (data) => {
+  let current = [];
+  data.forEach((state) => {
+    let newStateObj = {
+      state: state.state,
+      death: state.death,
+    };
+    current.push(newStateObj);
+  });
+  current.sort((a, b) => a.state.localeCompare(b.state));
+  return current;
+};
+
+//mapCurrentDay();
 
 const fetchDaily = () => {
   axios
