@@ -1,16 +1,31 @@
 const express = require('express');
 const axios = require('axios');
-//const cors = require('cors');
+const cors = require('cors');
 
 const app = express();
-//app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000' }));
 
-axios
-  .get('https://covidtracking.com/api/v1/states/current.json') // Ska Hämta dödsantal och kalylera senaste 3 dagarna
-  .then((res) => {
-    //console.log(res.data);
-  })
-  .catch((err) => console.log(err));
+const fetchCurrentDay = () => {
+  axios
+    .get('https://covidtracking.com/api/v1/states/current.json') // Ska Hämta dödsantal och kalkylera senaste 3 dagarna
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.log(err));
+};
+
+//fetchCurrentDay();
+
+const fetchDaily = () => {
+  axios
+    .get('https://covidtracking.com/api/v1/states/daily.json') // Ska Hämta dödsantal och kalkylera senaste 3 dagarna
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.log(err));
+};
+
+//fetchDaily();
 
 const today = new Date();
 
@@ -21,6 +36,14 @@ const dayBeforeYesterday = new Date(today.getTime());
 dayBeforeYesterday.setDate(today.getDate() - 2);
 
 console.log(today, yesterday, dayBeforeYesterday);
+
+// Calculate total new corona deaths during the last 3 days
+
+const calculateLastThreeDays = () => {};
+
+app.get('/', async (req, res) => {
+  res.send();
+});
 
 const port = 5000;
 
