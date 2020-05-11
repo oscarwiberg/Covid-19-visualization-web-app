@@ -36,7 +36,6 @@ const TableBodyComponent = ({ stateData, stateInfo, deathData }) => {
           <StyledTableCell align="center">
             {deathDataThreeDays[index] ? deathDataThreeDays[index] : 0}
           </StyledTableCell>
-          {/* "Total new corona deaths during the last 3 days above" */}
         </StyledTableRow>
       ))}
     </TableBody>

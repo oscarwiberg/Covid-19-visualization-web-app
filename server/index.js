@@ -66,7 +66,7 @@ const filterDataBasedOnDates = (data) => {
   return filterData;
 };
 
-// Fetch data from yestarday and the day before yesterday
+// Fetch data from yesterday and the day before yesterday
 const fetchDaily = () => {
   return axios
     .get('https://covidtracking.com/api/v1/states/daily.json')
@@ -77,9 +77,7 @@ const fetchDaily = () => {
     .catch((err) => console.log(err));
 };
 
-// Calculate total new corona deaths during the last 3 days (current day + yesterday + the day before yesterday)
-
-// data innehåller gårdagens och iförrgår
+// Calculate sum of deaths from today, yesterday and the day before yesterday
 
 const calculateDeath = (mergeCurrentAndHistorical) => {
   let result = [];
@@ -102,7 +100,6 @@ const calculateDeath = (mergeCurrentAndHistorical) => {
 const calculateCovidDeath = async () => {
   const dailyArray = await fetchDaily();
   const currentArray = await fetchCurrentDay();
-  // slå ihop dagens array med gårdagens + iförrgår
   const mergeCurrentAndHistorical = [...dailyArray, ...currentArray];
   const result = calculateDeath(mergeCurrentAndHistorical);
   return result;

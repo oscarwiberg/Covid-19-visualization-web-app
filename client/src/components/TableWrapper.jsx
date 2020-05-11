@@ -15,6 +15,7 @@ const useStyles = makeStyles({
 
 const TableWrapper = () => {
   const classes = useStyles();
+
   const [stateData, setStateData] = useState([]);
   const [stateInfo, setStateInfo] = useState([]);
   const [deathData, setDeathData] = useState([]);
@@ -61,7 +62,6 @@ const TableWrapper = () => {
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table}>
-        {/*size="small" on the container?*/}
         <TableHeader />
         <TableBodyComponent
           stateData={stateData}
