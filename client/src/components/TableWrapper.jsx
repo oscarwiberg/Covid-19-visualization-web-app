@@ -17,6 +17,7 @@ const TableWrapper = () => {
   const classes = useStyles();
   const [stateData, setStateData] = useState([]);
   const [stateInfo, setStateInfo] = useState([]);
+  const [deathData, setDeathData] = useState([]);
 
   useEffect(() => {
     const getStateData = () => {
@@ -44,12 +45,29 @@ const TableWrapper = () => {
     getStateInfo();
   }, []);
 
+  useEffect(() => {
+    const getDeathData = () => {
+      axios
+        .get('http://localhost:5000/')
+        .then((res) => {
+          setDeathData(res.data);
+        })
+        .catch((err) => console.log(err));
+    };
+
+    getDeathData();
+  }, []);
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table}>
         {/*size="small" on the container?*/}
         <TableHeader />
-        <TableBodyComponent stateData={stateData} stateInfo={stateInfo} />
+        <TableBodyComponent
+          stateData={stateData}
+          stateInfo={stateInfo}
+          deathData={deathData}
+        />
       </Table>
     </TableContainer>
   );

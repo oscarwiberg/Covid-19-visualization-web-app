@@ -18,9 +18,10 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const TableBodyComponent = ({ stateData, stateInfo }) => {
+const TableBodyComponent = ({ stateData, stateInfo, deathData }) => {
   const stateNames = stateInfo.map((data) => data.name);
   const stateShort = stateInfo.map((data) => data.state);
+  const deathDataThreeDays = deathData.map((data) => data.death);
 
   return (
     <TableBody>
@@ -33,7 +34,7 @@ const TableBodyComponent = ({ stateData, stateInfo }) => {
             {data.hospitalized ? data.hospitalized : 0}
           </StyledTableCell>
           <StyledTableCell align="center">
-            {data.hospitalized ? data.hospitalized : 0}
+            {deathDataThreeDays[index] ? deathDataThreeDays[index] : 0}
           </StyledTableCell>
           {/* "Total new corona deaths during the last 3 days above" */}
         </StyledTableRow>
