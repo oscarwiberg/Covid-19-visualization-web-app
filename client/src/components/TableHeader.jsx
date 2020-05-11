@@ -1,8 +1,5 @@
 import React from 'react';
-import TableRow from '@material-ui/core/TableRow';
-import TableHead from '@material-ui/core/TableHead';
-import TableCell from '@material-ui/core/TableCell';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, TableRow, TableHead, TableCell } from '@material-ui/core';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
