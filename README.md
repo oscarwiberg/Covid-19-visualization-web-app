@@ -1,5 +1,3 @@
 # Covid-19-visualization-web-app
 
-An application that visualizes corona data using the covid tracking data API https://covidtracking.com/api.
-
-Work in progress...
+An application that visualizes corona data using the covid tracking data API https://covidtracking.com/api, React, Material UI and Node.js.
